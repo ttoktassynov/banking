@@ -1,0 +1,15 @@
+<h1>Make payment on behalf of {{ account.name }}</h1>
+<h2>Account identification: {{account.identification}}</h2>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'banking:pay' account.id %}" method="post">
+{% csrf_token %}
+    Payment type: <select name="creditdebitCode" id="creditdebitCode" >
+        <option value="1">Credit</option>
+        <option value="2">Debit</option>
+    </select></br>
+    Amount: <input name="amount" id="amount"/></br>
+    Account identification: <input name="identification" = "identification"/></br>
+    
+<input type="submit" value="Send">
+</form>

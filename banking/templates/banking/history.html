@@ -1,0 +1,20 @@
+<h1>List of transactions</h1>
+{% if latest_transactions_list %}
+    <ul>
+    {% for transaction in latest_transactions_list %}
+        <li> Id: {{ transaction.id }}, 
+            {% if transaction.creditDebitIndicator == 1 %} 
+            Type: CREDIT from account {{transaction.debtorIdentification}},
+            {% else %}
+            Type: DEBIT to account {{transaction.creditorIdentification}},
+            {% endif %}
+            Amount: {{transaction.amount}} units,
+            On: {{transaction.bookingDateTime}}</span>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No transactions are found.</p>
+{% endif %}
+
+<a href="/">Back to accounts</a>

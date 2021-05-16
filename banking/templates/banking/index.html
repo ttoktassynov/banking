@@ -1,0 +1,13 @@
+<h1>List of accounts</h1>
+{% if account_list %}
+    <ul>
+    {% for account in account_list %}
+        <li>{{account.name}}'s account with identification: <span>{{ account.identification}}</span> 
+            <a href="{% url 'banking:history' account.id %}">history</a>
+            <a href="{% url 'banking:pay' account.id %}">pay</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No accounts are registered.</p>
+{% endif %}
